@@ -1,1 +1,21 @@
-body{color:black;}
+h1{
+    text-align: center;
+}
+
+.card-img-top{
+    padding-top: 10px;
+}
+
+.card{
+    border-radius: 20px;
+}
+
+.card-img-top{
+    border-radius: 20px;
+}
+.btn-primary{
+    margin-bottom: -25px;
+}
+p{
+    color: dimgray;
+}
