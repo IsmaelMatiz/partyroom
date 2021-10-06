@@ -24,12 +24,12 @@ function mostrarSalones(items) {
     salones += "<tbody>";
     for (let i = 0; i < items.length; i++) {
         salones += "<tr>";
-        salones += "<td>" + items[i].id + "</td>";
-        salones += "<td>" + items[i].owner + "</td>";
-        salones += "<td>" + items[i].capacity + "</td>";
-        salones += "<td>" + items[i].category_id + "</td>";
-        salones += "<td>" + items[i].name + "</td>";
-        salones += "<td><button onclick='editar(" + items[i].id + ")' class='btn btn-dark'>Editar</button></td>";
+        salones += "<td id='rplId"+items[i].id+"'>" + items[i].id + "</td>";
+        salones += "<td id='rplOwener"+items[i].id+"'>" + items[i].owner + "</td>";
+        salones += "<td id='rplCapacity"+items[i].id+"'>" + items[i].capacity + "</td>";
+        salones += "<td id='rplCategory"+items[i].id+"'>" + items[i].category_id + "</td>";
+        salones += "<td id='rplName"+items[i].id+"'>" + items[i].name + "</td>";
+        salones += "<td><button onclick='actualizarSalon(" + items[i].id + ")' class='btn btn-dark'>Editar</button></td>";
         salones += "<td><button onclick='borrarSalones(" + items[i].id + ")' class='btn btn-dark'>Borrar</button></td>";
         salones += "</tr>";
     }
@@ -57,8 +57,22 @@ function editar(id) {
     });
 }
 
-function actualizarSalon() {
-
+function actualizarSalon(id) {
+    $.ajax({
+        url: "https://g8fa4d195f24899-usa.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/partyroom/partyroom/"+id,
+        data: {},
+        type: "GET",
+        datatype: "JSON",
+        contentType: "application/json",
+        success: function (respuesta) {
+            console.log(respuesta.items[0].owner)
+            $("#rplId"+respuesta.items[0].id).replaceWith("<td><input type='hidden' id='salonesIdAc' class='form-control'></td>");
+            $("#rplOwener"+respuesta.items[0].id).replaceWith("<td><input type='text' id='salonesOwnerAc' class='form-control'></td>");
+            $("#rplCapacity"+respuesta.items[0].id).replaceWith("<td><input type='number' id='salonesCapacityAc' class='form-control'></td>");
+            $("#rplCategory"+respuesta.items[0].id).replaceWith("<td><input type='number' id='salonesCategoryIdAc' class='form-control'></td>");
+            $("#rplName"+respuesta.items[0].id).replaceWith("<td><input type='text' id ='salonesNameAc' class='form-control' value=''></td>");
+        }
+    });
 }
 
 function borrarSalones(id) {
