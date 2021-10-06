@@ -13,6 +13,7 @@ function obtenerSalones() {
 function mostrarSalones(items) {
     let salones = "<table class='table'>";
     salones += "<thead class='p-3 mb-2 bg-dark text-white'>";
+    salones += "<th>ID</th>"
     salones += "<th>OWNER</th>";
     salones += "<th>CAPACITY</th>";
     salones += "<th>CATEGORY ID</th>";
