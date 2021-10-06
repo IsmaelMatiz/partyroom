@@ -4,7 +4,6 @@ function obtenerSalones() {
         type: "GET",
         datatype: "JSON",
         success: function (respuesta) {
-            console.log(respuesta);
             $("#Result").empty();
             mostrarSalones(respuesta.items);
         }
@@ -28,7 +27,7 @@ function mostrarSalones(items) {
         salones += "<td>" + items[i].capacity + "</td>";
         salones += "<td>" + items[i].category_id + "</td>";
         salones += "<td>" + items[i].name + "</td>";
-        += "<td><button onclick=''>Editar</button></td>";
+        salones += "<td><button onclick=''>Editar</button></td>";
         salones += "<td><button onclick=''>Borrar</button></td>";
     };
     salones += "</tbody>";
