@@ -29,7 +29,7 @@ function mostrarSalones(items) {
         salones += "<td>" + items[i].capacity + "</td>";
         salones += "<td>" + items[i].category_id + "</td>";
         salones += "<td>" + items[i].name + "</td>";
-        salones += "<td><button onclick='emergente()' class='btn btn-dark'>Editar</button></td>";
+        salones += "<td><button onclick='emergente(" + items[i].id + ")' class='btn btn-dark'>Editar</button></td>";
         salones += "<td><button onclick='borrarSalones(" + items[i].id + ")' class='btn btn-dark'>Borrar</button></td>";
         salones += "</tr>";
     }
@@ -37,34 +37,31 @@ function mostrarSalones(items) {
     salones += "</table>";
     $("#Result").append(salones);
     $('td:nth-child(1), th:nth-child(1)').hide();
-};
+}
 
-function emergente() {
+function emergente(id) {
+    $.ajax({
+        url: "https://g8fa4d195f24899-usa.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/partyroom/partyroom/"+id,
+        type: "GET",
+        datatype: "JSON",
+        success: function (respuesta) {
+            console.log(respuesta.items);
+            llenarInputs(respuesta.items);
+        }
+    });
     var myWindow = window.open("mensajeactualizar.html"
         , "myWindow", "width=800,height=300");
 }
 
-function actualizarSalones(){
-    let myData={
-        "id":$("#salonesIdAc").val(),
-        "owner":$("#salonesOwnerAc").val(),
-        "capacity":$("#salonesCapacityAc").val(),
-        "category_id":$("#salonesCategoryIdAc").val(),
-        "name":$("#salonesNameAc").val()
-    };
-    let dataToSend=JSON.stringify(myData);
-    $.ajax({
-        url:"https://g8fa4d195f24899-usa.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/partyroom/partyroom",
-        type:"PUT",
-        data:dataToSend,
-        contentType:"application/JSON",
-        datatype:"JSON",
-        success:function(respuesta){
-            alert("se ha Actualizado");
-            obtenerSalones();
-        },
-        error:function(){alert("El dato no existe o te falta llenar un campo")}
-    });
+function llenarInputs(items){
+    console.log(items[0].id);
+    for (let i = 0; i < items.length; i++){
+        console.log(items[i].id);
+    }
+    //$("#salonesNameAc").val("Ok OK algo esta mal");
+}
+
+function actualizarSalon() {
 
 }
 

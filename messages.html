@@ -10,7 +10,16 @@
 <body>
 <h1>Mensajes</h1>
 <a href="index.html" class="btn btn-dark" >Volver</a>
-
+<a href="salons.html" class="btn btn-dark" >Ver Salones</a>
+<br>
+<br>
+<div class="input-group">
+    <div class="input-group-prepend">
+        <button onclick="agregarMensaje()" class="btn btn-dark">Agregar</button>
+    </div>
+    <input type="hidden" id="mensajeId" class="form-control">
+    <input type="text" id="mensajeText" class="form-control">
+</div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript" src="js/listas.js"></script>
