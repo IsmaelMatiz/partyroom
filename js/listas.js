@@ -29,7 +29,7 @@ function mostrarSalones(items) {
         salones += "<td>" + items[i].capacity + "</td>";
         salones += "<td>" + items[i].category_id + "</td>";
         salones += "<td>" + items[i].name + "</td>";
-        salones += "<td><button onclick='emergente(" + items[i].id + ")' class='btn btn-dark'>Editar</button></td>";
+        salones += "<td><button onclick='editar(" + items[i].id + ")' class='btn btn-dark'>Editar</button></td>";
         salones += "<td><button onclick='borrarSalones(" + items[i].id + ")' class='btn btn-dark'>Borrar</button></td>";
         salones += "</tr>";
     }
@@ -39,23 +39,22 @@ function mostrarSalones(items) {
     $('td:nth-child(1), th:nth-child(1)').hide();
 }
 
-function emergente(id) {
+function editar(id) {
     $.ajax({
         url: "https://g8fa4d195f24899-usa.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/partyroom/partyroom/"+id,
+        data: {},
         type: "GET",
         datatype: "JSON",
+        contentType: "application/json",
         success: function (respuesta) {
-            llenarInputs(respuesta.items);
+            //console.log(respuesta.items[0].owner)
+            $("#salonesId").val(respuesta.items[0].id);
+            $("#salonesOwner").val(respuesta.items[0].owner);
+            $("#salonesCapacity").val(respuesta.items[0].capacity);
+            $("#salonesCategoryId").val(respuesta.items[0].category_id);
+            $("#salonesName").val(respuesta.items[0].name);
         }
     });
-}
-
-function llenarInputs(items){
-    $("#salonesNameAc").val("Ok OK algo esta mal");
-    var myWindow = window.open("mensajeactualizar.html"
-        , "myWindow", "width=800,height=300");
-    myWindow.console.log(items)
-
 }
 
 function actualizarSalon() {
@@ -125,12 +124,6 @@ function mostrarClientes(items) {
     $('td:nth-child(1), th:nth-child(1)').hide();
 };
 
-function actualizarClientes(idAc) {
-    var myWindow = window.open("mensajesactualizar.html"
-        , "myWindow", "width=600,height=500");
-
-}
-
 function borrarClientes(id) {
     var idEliminarCliente = {
         id: id
@@ -165,8 +158,6 @@ function obtenerMensajes() {
     });
 };
 
-
-
 function mostrarMensajes(items) {
     let mensajes = "<table class='table'>";
     mensajes += "<thead class='p-3 mb-2 bg-dark text-white'>";
@@ -192,13 +183,6 @@ function mostrarMensajes(items) {
     $("#Result").append(mensajes);
     $('td:nth-child(1), th:nth-child(1)').hide();
 };
-
-
-function actualizarMensajes(idAc) {
-    var myWindow = window.open("mensajesactualizar.html"
-        , "myWindow", "width=600,height=500");
-
-}
 
 function borrarMensajes(id) {
     var idEliminarMensajes = {
