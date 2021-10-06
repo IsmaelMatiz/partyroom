@@ -4,13 +4,14 @@ function obtenerSalones() {
         type: "GET",
         datatype: "JSON",
         success: function (respuesta) {
-            $("#Result").empty();
-            mostrarSalones(respuesta.items);
+            console.log(respuesta);
+            //$("#Result").empty();
+            //mostrarSalones(respuesta.items);
         }
     });
 };
 
-function mostrarSalones(items) {
+/*function mostrarSalones(items) {
     let salones = "<table class='table'>";
     salones += "<thead class='p-3 mb-2 bg-dark text-white'>";
     salones += "<th>OWNER</th>";
@@ -27,7 +28,7 @@ function mostrarSalones(items) {
         salones += "<td>" + items[i].capacity + "</td>";
         salones += "<td>" + items[i].category_id + "</td>";
         salones += "<td>" + items[i].name + "</td>";
-        salones += "<td><button onclick=''>Editar</button></td>";
+        += "<td><button onclick=''>Editar</button></td>";
         salones += "<td><button onclick=''>Borrar</button></td>";
     };
     salones += "</tbody>";
@@ -35,7 +36,7 @@ function mostrarSalones(items) {
     $("#Result").append(salones);
     $('td:nth-child(1), th:nth-child(1)').hide();
 };
-
+*/
 /*function actualizarSalones() {
     let datos = {
         "id":$(""),
