@@ -13,7 +13,13 @@ function agregarSalon() {
         datatype: "JSON",
         success: function (respuesta) {
             alert("Se creo un nuevo salón");
-            mostrarSalones();
+            $("#salonesId").val('');
+            $("#salonesOwner").val('');
+            $("#salonesCapacity").val('');
+            $("#salonesCategoryId").val('');
+            $("#salonesName").val('');
+            $("#Result").empty();
+            obtenerSalones();
         }
     });
 }

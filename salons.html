@@ -1,10 +1,13 @@
+<!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <title>Salones</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link href="css/styles.css" rel="stylesheet">
 </head>
-<body>
+<body onload="obtenerSalones()">
 <h1>Salones</h1>
 <a href="index.html" class="btn btn-dark">Volver</a>
 <a href="clients.html" class="btn btn-dark">Ver Clientes</a>
@@ -12,21 +15,22 @@
 <br>
 <div class="input-group">
     <div class="input-group-prepend">
-        <button onclick="" class="btn btn-dark">Agregar</button>
+        <button onclick="agregarSalon()" class="btn btn-dark">Agregar</button>
     </div>
     <input type="hidden" id="salonesId" class="form-control">
     <input type="text" id="salonesOwner" class="form-control">
     <input type="number" id="salonesCapacity" class="form-control">
     <input type="number" id="salonesCategoryId" class="form-control">
-    <input type="text" id ="salonesName" class="form-control">
+    <input type="text" id="salonesName" class="form-control">
 </div>
 
 <div class="row justify">
     <button onclick="obtenerSalones()" class="btn btn-dark">Ver Salones</button>
 </div>
 <div id="Result"></div>
-</table>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript" src="js/listas.js"></script>
+<script type="text/javascript" src="js/registro.js"></script>
+
 </html>

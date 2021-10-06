@@ -29,23 +29,44 @@ function mostrarSalones(items) {
         salones += "<td>" + items[i].capacity + "</td>";
         salones += "<td>" + items[i].category_id + "</td>";
         salones += "<td>" + items[i].name + "</td>";
-        salones += "<td><button onclick='actualizarSalones(" + items[i].id + ")' class='btn btn-dark'>Editar</button></td>";
+        salones += "<td><button onclick='emergente()' class='btn btn-dark'>Editar</button></td>";
         salones += "<td><button onclick='borrarSalones(" + items[i].id + ")' class='btn btn-dark'>Borrar</button></td>";
         salones += "</tr>";
     }
-    ;
     salones += "</tbody>";
     salones += "</table>";
     $("#Result").append(salones);
     $('td:nth-child(1), th:nth-child(1)').hide();
 };
 
-function actualizarSalones(idAc) {
-    var myWindow = window.open("https://col40.co/evento#block-views-block-conferencistas-conferencistas-block"
-        , "myWindow", "width=600,height=500");
+function emergente() {
+    var myWindow = window.open("mensajesactualizar.html"
+        , "myWindow", "width=800,height=300");
 }
 
+function actualizarSalones(){
+    let myData={
+        "id":$("#salonesIdAc").val(),
+        "owner":$("#salonesOwnerAc").val(),
+        "capacity":$("#salonesCapacityAc").val(),
+        "category_id":$("#salonesCategoryIdAc").val(),
+        "name":$("#salonesNameAc").val()
+    };
+    let dataToSend=JSON.stringify(myData);
+    $.ajax({
+        url:"https://g8fa4d195f24899-usa.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/partyroom/partyroom",
+        type:"PUT",
+        data:dataToSend,
+        contentType:"application/JSON",
+        datatype:"JSON",
+        success:function(respuesta){
+            alert("se ha Actualizado");
+            obtenerSalones();
+        },
+        error:function(){alert("El dato no existe o te falta llenar un campo")}
+    });
 
+}
 
 function borrarSalones(id) {
     var idEliminar = {
@@ -68,26 +89,26 @@ function borrarSalones(id) {
 
 function obtenerClientes() {
     $.ajax({
-       url: 'https://g8fa4d195f24899-usa.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/partyroom/partyroom',
-       type: 'GET',
-       datatype: "JSON",
+        url: 'https://g8fa4d195f24899-usa.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/partyroom/partyroom',
+        type: 'GET',
+        datatype: "JSON",
 
-        success: function (respuesta){
-        $("#Result").empty();
-        obtenerClientes(respuesta);
+        success: function (respuesta) {
+            $("#Result").empty();
+            obtenerClientes(respuesta);
 
         }
 
     });
 };
 
-function mostrarClientes (items) {
+function mostrarClientes(items) {
     let clientes = "<table class='table'>";
     clientes += "<thead class='p-3 mb-2 bg-dark text-white'>";
     clientes += "<th>ID</th>"
-    clientes  += "<th>NAME</th>";
-    clientes  += "<th>EMAIL</th>";
-    clientes  += "<th>AGE</th>";
+    clientes += "<th>NAME</th>";
+    clientes += "<th>EMAIL</th>";
+    clientes += "<th>AGE</th>";
     clientes += "<th>UPDATE</th>";
     clientes += "<th>DELETE</th>";
     clientes += "</thead>";
@@ -95,7 +116,7 @@ function mostrarClientes (items) {
     for (let i = 0; i < items.length; i++) {
         clientes += "<tr>";
         clientes += "<td>" + items[i].id + "</td>";
-        clientes  += "<td>" + items[i].name + "</td>";
+        clientes += "<td>" + items[i].name + "</td>";
         clientes += "<td>" + items[i].email + "</td>";
         clientes += "<td>" + items[i].age + "</td>";
 
@@ -135,4 +156,72 @@ function borrarClientes(id) {
     });
 }
 
+function obtenerMensajes() {
+    $.ajax({
+        url: 'https://g8fa4d195f24899-usa.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/partyroom/partyroom',
+        type: 'GET',
+        datatype: "JSON",
+
+        success: function (respuesta) {
+            $("#Result").empty();
+            obtenerClientes(respuesta);
+
+        }
+
+    });
+};
+
+
+
+function mostrarMensajes(items) {
+    let mensajes = "<table class='table'>";
+    mensajes += "<thead class='p-3 mb-2 bg-dark text-white'>";
+    mensajes += "<th>ID</th>"
+    mensajes += "<th>MESSAGETEXT</th>";
+    mensajes += "<th>UPDATE</th>";
+    mensajes += "<th>DELETE</th>";
+    mensajes += "</thead>";
+    mensajes += "<tbody>";
+    for (let i = 0; i < items.length; i++) {
+        mensajes += "<tr>";
+        mensajes += "<td>" + items[i].id + "</td>";
+        mensajes += "<td>" + items[i].messagetext + "</td>";
+
+
+        mensajes += "<td><button onclick='actualizarMensajes(" + items[i].id + ")' class='btn btn-dark'>Editar</button></td>";
+        mensajes += "<td><button onclick='borrarMensajes(" + items[i].id + ")' class='btn btn-dark'>Borrar</button></td>";
+        mensajes += "</tr>";
+    }
+    ;
+    mensajes += "</tbody>";
+    mensajes += "</table>";
+    $("#Result").append(mensajes);
+    $('td:nth-child(1), th:nth-child(1)').hide();
+};
+
+
+function actualizarMensajes(idAc) {
+    var myWindow = window.open("mensajesactualizar.html"
+        , "myWindow", "width=600,height=500");
+
+}
+
+function borrarMensajes(id) {
+    var idEliminarMensajes = {
+        id: id
+    };
+    var datosJson = JSON.stringify(idEliminarMensajes);
+    $.ajax({
+        url: 'https://g8fa4d195f24899-usa.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/partyroom/partyroom',
+        type: "DELETE",
+        data: datosJson,
+        contentType: "application/JSON",
+        datatype: "JSON",
+        success: function (respuesta) {
+            $("#Result").empty();
+            obtenerSalones();
+            alert("Fue eliminado con éxito")
+        }
+    });
+}
 
