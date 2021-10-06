@@ -22,13 +22,15 @@ function mostrarSalones(items) {
     salones += "</thead>";
     salones += "<tbody>";
     for (let i = 0; i < items.length; i++) {
+        salones += "<tr>";
         salones += "<td>" + items[i].id + "</td>";
         salones += "<td>" + items[i].owner + "</td>";
         salones += "<td>" + items[i].capacity + "</td>";
         salones += "<td>" + items[i].category_id + "</td>";
         salones += "<td>" + items[i].name + "</td>";
-        salones += "<td><button onclick=''>Editar</button></td>";
-        salones += "<td><button onclick=''>Borrar</button></td>";
+        salones += "<td><button onclick='' class='btn btn-dark'>Editar</button></td>";
+        salones += "<td><button onclick='' class='btn btn-dark'>Borrar</button></td>";
+        salones += "</tr>";
     };
     salones += "</tbody>";
     salones += "</table>";
