@@ -32,7 +32,24 @@ function agregarCliente() {
         datatype: "JSON",
         succes: function (respuesta) {
             alert("Gracias por su registro");
+            $("#Result").empty();
+            mostrarSalones()
+        }
+    });
+}
 
+function agregarMensaje() {
+    let mensaje = {
+        messagetext: $("#mensajeText").val()
+    };
+    let jsonMensaje = JSON.stringify(mensaje);
+    $.ajax({
+        url: "https://g8fa4d195f24899-usa.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/message/message",
+        type: "POST",
+        data: mensaje,
+        datatype: "JSON",
+        success: function (respuesta) {
+            alert("Su mensaje fue registrado")
             $("#Result").empty();
             mostrarSalones()
         }
