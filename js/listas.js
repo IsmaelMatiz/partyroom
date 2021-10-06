@@ -3,10 +3,9 @@ function obtenerSalones() {
         url: "https://g8fa4d195f24899-usa.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/partyroom/partyroom",
         type: "GET",
         datatype: "JSON",
-
         success: function (respuesta) {
             $("#Result").empty();
-            mostrarSalones(respuesta);
+            mostrarSalones(respuesta.items);
         }
     });
 };
@@ -86,10 +85,9 @@ function mostrarClientes (items) {
     let clientes = "<table class='table'>";
     clientes += "<thead class='p-3 mb-2 bg-dark text-white'>";
     clientes += "<th>ID</th>"
-    clientes  += "<th>OWNER</th>";
-    clientes  += "<th>CAPACITY</th>";
-    clientes  += "<th>CATEGORY ID</th>";
-    clientes += "<th>NAME</th>";
+    clientes  += "<th>NAME</th>";
+    clientes  += "<th>EMAIL</th>";
+    clientes  += "<th>AGE</th>";
     clientes += "<th>UPDATE</th>";
     clientes += "<th>DELETE</th>";
     clientes += "</thead>";
@@ -118,7 +116,7 @@ function actualizarClientes(idAc) {
 
 }
 
-function borrarCliente(id) {
+function borrarClientes(id) {
     var idEliminarCliente = {
         id: id
     };
