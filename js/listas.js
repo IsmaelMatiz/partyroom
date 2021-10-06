@@ -39,10 +39,6 @@ function mostrarSalones(items) {
     $('td:nth-child(1), th:nth-child(1)').hide();
 }
 
-function updateSalon(){
-    alert("te toca Thor");
-}
-
 function actualizarSalon(id) {
     $.ajax({
         url: "https://g8fa4d195f24899-usa.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/partyroom/partyroom/"+id,
@@ -52,14 +48,37 @@ function actualizarSalon(id) {
         contentType: "application/json",
         success: function (respuesta) {
             console.log(respuesta.items[0].owner)
-            $("#rplId"+respuesta.items[0].id).replaceWith("<td><input type='hidden' id='salonesIdAc' class='form-control'></td>");
-            $("#rplOwener"+respuesta.items[0].id).replaceWith("<td><input type='text' id='salonesOwnerAc' class='form-control'></td>");
-            $("#rplCapacity"+respuesta.items[0].id).replaceWith("<td><input type='number' id='salonesCapacityAc' class='form-control'></td>");
-            $("#rplCategory"+respuesta.items[0].id).replaceWith("<td><input type='number' id='salonesCategoryIdAc' class='form-control'></td>");
-            $("#rplName"+respuesta.items[0].id).replaceWith("<td><input type='text' id ='salonesNameAc' class='form-control' value=''></td>");
+            $("#rplId"+respuesta.items[0].id).replaceWith("<td><input type='hidden' id='salonesIdAc' class='form-control' value='" + respuesta.items[0].id + "'></td>");
+            $("#rplOwener"+respuesta.items[0].id).replaceWith("<td><input type='text' id='salonesOwnerAc' class='form-control' value='" + respuesta.items[0].owner + "'></td>");
+            $("#rplCapacity"+respuesta.items[0].id).replaceWith("<td><input type='number' id='salonesCapacityAc' class='form-control' value='" + respuesta.items[0].capacity + "'></td>");
+            $("#rplCategory"+respuesta.items[0].id).replaceWith("<td><input type='number' id='salonesCategoryIdAc' class='form-control' value='" + respuesta.items[0].category_id + "'></td>");
+            $("#rplName"+respuesta.items[0].id).replaceWith("<td><input type='text' id ='salonesNameAc' class='form-control' value='" + respuesta.items[0].name + "'></td>");
             $('td:nth-child(1), th:nth-child(1)').hide();
-            $("#rplConfirmar"+respuesta.items[0].id).replaceWith("<td><button onclick='updateSalon()' class='btn btn-dark'>cofirmar</button></td>");
-            $("#rplCancelar"+respuesta.items[0].id).replaceWith("<td><button onclick='obtenerSalones()' class='btn btn-dark'>cancelar</button></td>");
+            $("#rplConfirmar"+respuesta.items[0].id).replaceWith("<td><button onclick='updateSalon()' class='btn btn-dark'>Confirmar</button></td>");
+            $("#rplCancelar"+respuesta.items[0].id).replaceWith("<td><button onclick='obtenerSalones()' class='btn btn-dark'>Cancelar</button></td>");
+        }
+    });
+}
+
+function updateSalon(){
+    let actualizarSalon = {
+        id: $("#salonesIdAc").val(),
+        owner: $("#salonesOwnerAc").val(),
+        capacity: $("#salonesCapacityAc").val(),
+        category_id: $("#salonesCategoryIdAc").val(),
+        name: $("#salonesNameAc").val()
+    };
+    let jsonActualizarSalon = JSON.stringify(actualizarSalon);
+    $.ajax({
+        url: "https://g8fa4d195f24899-usa.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/partyroom/partyroom",
+        data: jsonActualizarSalon,
+        type: "PUT",
+        datatype: "JSON",
+        contentType: "application/json",
+        success: function (respuesta){
+            alert("Se ha actualizado el salón")
+            $("#Result").empty();
+            obtenerSalones();
         }
     });
 }
@@ -204,4 +223,3 @@ function borrarMensajes(id) {
         }
     });
 }
-
