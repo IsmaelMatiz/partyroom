@@ -5,13 +5,13 @@ function obtenerSalones() {
         datatype: "JSON",
         success: function (respuesta) {
             console.log(respuesta);
-            //$("#Result").empty();
-            //mostrarSalones(respuesta.items);
+            $("#Result").empty();
+            mostrarSalones(respuesta.items);
         }
     });
 };
 
-/*function mostrarSalones(items) {
+function mostrarSalones(items) {
     let salones = "<table class='table'>";
     salones += "<thead class='p-3 mb-2 bg-dark text-white'>";
     salones += "<th>OWNER</th>";
@@ -36,7 +36,7 @@ function obtenerSalones() {
     $("#Result").append(salones);
     $('td:nth-child(1), th:nth-child(1)').hide();
 };
-*/
+
 /*function actualizarSalones() {
     let datos = {
         "id":$(""),
