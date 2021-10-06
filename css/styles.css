@@ -2,6 +2,10 @@ h1{
     text-align: center;
 }
 
+p{
+    color: dimgray;
+}
+
 .card-img-top{
     padding-top: 10px;
 }
@@ -15,7 +19,4 @@ h1{
 }
 .btn-primary{
     margin-bottom: -25px;
-}
-p{
-    color: dimgray;
 }

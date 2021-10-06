@@ -29,8 +29,8 @@ function mostrarSalones(items) {
         salones += "<td id='rplCapacity"+items[i].id+"'>" + items[i].capacity + "</td>";
         salones += "<td id='rplCategory"+items[i].id+"'>" + items[i].category_id + "</td>";
         salones += "<td id='rplName"+items[i].id+"'>" + items[i].name + "</td>";
-        salones += "<td><button onclick='actualizarSalon(" + items[i].id + ")' class='btn btn-dark'>Editar</button></td>";
-        salones += "<td><button onclick='borrarSalones(" + items[i].id + ")' class='btn btn-dark'>Borrar</button></td>";
+        salones += "<td><button onclick='actualizarSalon(" + items[i].id + ")' id='rplConfirmar"+items[i].id+"' class='btn btn-dark'>Editar</button></td>";
+        salones += "<td><button onclick='borrarSalones(" + items[i].id + ")' id='rplCancelar"+items[i].id+"' class='btn btn-dark'>Borrar</button></td>";
         salones += "</tr>";
     }
     salones += "</tbody>";
@@ -39,22 +39,8 @@ function mostrarSalones(items) {
     $('td:nth-child(1), th:nth-child(1)').hide();
 }
 
-function editar(id) {
-    $.ajax({
-        url: "https://g8fa4d195f24899-usa.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/partyroom/partyroom/"+id,
-        data: {},
-        type: "GET",
-        datatype: "JSON",
-        contentType: "application/json",
-        success: function (respuesta) {
-            //console.log(respuesta.items[0].owner)
-            $("#salonesId").val(respuesta.items[0].id);
-            $("#salonesOwner").val(respuesta.items[0].owner);
-            $("#salonesCapacity").val(respuesta.items[0].capacity);
-            $("#salonesCategoryId").val(respuesta.items[0].category_id);
-            $("#salonesName").val(respuesta.items[0].name);
-        }
-    });
+function updateSalon(){
+    alert("te toca Thor");
 }
 
 function actualizarSalon(id) {
@@ -71,6 +57,9 @@ function actualizarSalon(id) {
             $("#rplCapacity"+respuesta.items[0].id).replaceWith("<td><input type='number' id='salonesCapacityAc' class='form-control'></td>");
             $("#rplCategory"+respuesta.items[0].id).replaceWith("<td><input type='number' id='salonesCategoryIdAc' class='form-control'></td>");
             $("#rplName"+respuesta.items[0].id).replaceWith("<td><input type='text' id ='salonesNameAc' class='form-control' value=''></td>");
+            $("#rplConfirmar"+respuesta.items[0].id).replaceWith("<td><button onclick='updateSalon()' class='btn btn-dark'>cofirmar</button></td>");
+            $("#rplCancelar"+respuesta.items[0].id).replaceWith("<td><button onclick='obtenerSalones()' class='btn btn-dark'>cancelar</button></td>");
+            //$('td:nth-child(1), th:nth-child(1)').hide();
         }
     });
 }
@@ -166,11 +155,10 @@ function obtenerMensajes() {
         success: function (respuesta) {
             $("#Result").empty();
             obtenerClientes(respuesta);
-
         }
 
     });
-};
+}
 
 function mostrarMensajes(items) {
     let mensajes = "<table class='table'>";
