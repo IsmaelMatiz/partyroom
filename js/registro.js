@@ -46,7 +46,4 @@ function borrarSalones(id) {
     var idEliminar = {
         id: id
     };
-var dat
-
-}
 }
