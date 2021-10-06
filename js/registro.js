@@ -15,7 +15,7 @@ function mostrarSalones(items) {
     salones += "<thead class='p-3 mb-2 bg-dark text-white'>";
     salones += "<th>OWNER</th>";
     salones += "<th>CAPACITY</th>";
-    salones += "<th>CATEGORY ID</th>;
+    salones += "<th>CATEGORY ID</th>";
     salones += "<th>NAME</th>";
     salones += "<th>UPDATE</th>";
     salones += "<th>DELETE</th>";
@@ -29,21 +29,21 @@ function mostrarSalones(items) {
         salones += "<td>" + items[i].name + "</td>";
         salones += "<td><button onclick=''>Editar</button></td>";
         salones += "<td><button onclick=''>Borrar</button></td>";
-    }
+    };
     salones += "</tbody>";
     salones += "</table>";
     $("#Result").append(salones);
     $('td:nth-child(1), th:nth-child(1)').hide();
 };
 
-function actualizarSalones() {
+/*function actualizarSalones() {
     let datos = {
         "id":$(""),
-    }
-}
+    };
+};
 
 function borrarSalones(id) {
     var idEliminar = {
         id: id
     };
-}
+};*/
