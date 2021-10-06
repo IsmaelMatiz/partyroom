@@ -57,9 +57,9 @@ function actualizarSalon(id) {
             $("#rplCapacity"+respuesta.items[0].id).replaceWith("<td><input type='number' id='salonesCapacityAc' class='form-control'></td>");
             $("#rplCategory"+respuesta.items[0].id).replaceWith("<td><input type='number' id='salonesCategoryIdAc' class='form-control'></td>");
             $("#rplName"+respuesta.items[0].id).replaceWith("<td><input type='text' id ='salonesNameAc' class='form-control' value=''></td>");
+            $('td:nth-child(1), th:nth-child(1)').hide();
             $("#rplConfirmar"+respuesta.items[0].id).replaceWith("<td><button onclick='updateSalon()' class='btn btn-dark'>cofirmar</button></td>");
             $("#rplCancelar"+respuesta.items[0].id).replaceWith("<td><button onclick='obtenerSalones()' class='btn btn-dark'>cancelar</button></td>");
-            //$('td:nth-child(1), th:nth-child(1)').hide();
         }
     });
 }
