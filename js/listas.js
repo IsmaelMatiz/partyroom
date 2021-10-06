@@ -45,20 +45,17 @@ function emergente(id) {
         type: "GET",
         datatype: "JSON",
         success: function (respuesta) {
-            console.log(respuesta.items);
             llenarInputs(respuesta.items);
         }
     });
-    var myWindow = window.open("mensajeactualizar.html"
-        , "myWindow", "width=800,height=300");
 }
 
 function llenarInputs(items){
-    console.log(items[0].id);
-    for (let i = 0; i < items.length; i++){
-        console.log(items[i].id);
-    }
-    //$("#salonesNameAc").val("Ok OK algo esta mal");
+    $("#salonesNameAc").val("Ok OK algo esta mal");
+    var myWindow = window.open("mensajeactualizar.html"
+        , "myWindow", "width=800,height=300");
+    myWindow.console.log(items)
+
 }
 
 function actualizarSalon() {
