@@ -40,7 +40,7 @@ function mostrarSalones(items) {
 };
 
 function emergente() {
-    var myWindow = window.open("mensajesactualizar.html"
+    var myWindow = window.open("mensajeactualizar.html"
         , "myWindow", "width=800,height=300");
 }
 
