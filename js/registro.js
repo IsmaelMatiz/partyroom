@@ -41,31 +41,9 @@ function mostrarSalones(items) {
 };
 
 function actualizarSalones(idAc) {
-    let datos = {
-        "id": idAc,
-        "owner": $("#salonesOwner").val(),
-        "capacity": $("#salonesCapacity").val(),
-        "categoryid": $("#salonesCategoryId").val(),
-        "name": $("salonesName").val()
-    };
-    let covertido = JSON.stringify(datos);
-    $.ajax({
-        url: "https://g8fa4d195f24899-usa.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/partyroom/partyroom",
-        type: "PUT",
-        data: covertido,
-        contentType: "aplication/JSON",
-        datatype: "JSON",
-        success: function (respuesta) {
-            alert("se ha Actualizado");
-            obtenerSalones();
-        },
-        error: function () {
-            alert("El dato no existe o te falta llenar un campo")
-        }
-    });
+
 
 }
-;
 
 function borrarSalones(id) {
     var idEliminar = {
@@ -75,7 +53,7 @@ function borrarSalones(id) {
     $.ajax({
         url: 'https://g8fa4d195f24899-usa.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/partyroom/partyroom',
         type: "DELETE",
-        data: jsonId,
+        data: datosJson,
         contentType: "application/JSON",
         datatype: "JSON",
         success: function (respuesta) {
