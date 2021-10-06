@@ -79,6 +79,9 @@ function updateSalon(){
             alert("Se ha actualizado el salón")
             $("#Result").empty();
             obtenerSalones();
+        },
+        error: function (xhr, status) {
+            alert("Todos los valores son obligatorios");
         }
     });
 }
@@ -111,9 +114,7 @@ function obtenerClientes() {
         success: function (respuesta) {
             $("#Result").empty();
             obtenerClientes(respuesta);
-
         }
-
     });
 };
 

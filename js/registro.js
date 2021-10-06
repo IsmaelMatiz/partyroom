@@ -20,6 +20,9 @@ function agregarSalon() {
             $("#salonesName").val('');
             $("#Result").empty();
             obtenerSalones();
+        },
+        error: function (xhr, status) {
+            alert("Los campos son obligatorios");
         }
     });
 }
