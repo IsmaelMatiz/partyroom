@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link href="css/styles.css" rel="stylesheet">
 </head>
-<body >
+<body onload="obtenerClientes()">
 <h1>Clientes</h1>
 <a href="index.html" class="btn btn-dark" >Volver</a>
 <a href="messages.html" class="btn btn-dark" >Ver Mensajes</a>
@@ -23,29 +23,15 @@
     <input type="number" id="clientAge" class="form-control">
 </div>
 
-<div class="row justify"><button onclick="" class="btn btn-dark" >Ver Clientes</button></div>
+<div class="row justify">
+    <button onclick="obtenerClientes()" class="btn btn-dark">Ver Clientes</button>
+</div>
 
-    <table class="table">
-        <thead class="p-3 mb-2 bg-dark text-white">
-            <th>NAME</th>
-            <th>EMAIL</th>
-            <th>AGE</th>
-            <th>DELETE</th>
-            <th>UPDATE</th>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Bruce Wayne</td>
-                <td>papibatman@hotmail.com</td>
-                <td>80</td>
-                <td><button type="button" class="btn btn-dark">Borrar</button></td>
-                <td><button type="button" class="btn btn-dark">Editar</button></td>
-            </tr>
-            <div id="Result"></div>
-        </tbody>
-    </table>
+<div id="ResultClient"></div>
+
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.8/jquery.min.js"></script>
-<script type = "text/javascript" src="js/listas.js"></script>
-<script type= "text/javascript" src="js/registro.js"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type= "text/javascript" src="js/clientes.js"></script>
 </html>
