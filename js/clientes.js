@@ -9,7 +9,7 @@ function agregarCliente() {
     $.ajax({
         url: "https://g8fa4d195f24899-usa.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/client/client",
         type: "POST",
-        data: cliente,
+        data: JSON.stringify(cliente),
         datatype: "JSON",
         contentType: "application/json",
         success: function (respuesta) {
