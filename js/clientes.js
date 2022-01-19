@@ -7,7 +7,7 @@ function agregarCliente() {
     console.log(cliente);
 
     $.ajax({
-        url: "https://g8fa4d195f24899-usa.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/client/client",
+        url: "https://g3587aeb78a14ca-partyroom.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/client/client",
         type: "POST",
         data: JSON.stringify(cliente),
         datatype: "JSON",
@@ -23,7 +23,7 @@ function agregarCliente() {
 
 function obtenerClientes() {
     $.ajax({
-        url: 'https://g8fa4d195f24899-usa.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/client/client',
+        url: 'https://g3587aeb78a14ca-partyroom.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/client/client',
         type: 'GET',
         datatype: "JSON",
         success: function (respuesta) {
@@ -64,7 +64,7 @@ function mostrarClientes(items) {
 
 function actualizarClientes(id) {
     $.ajax({
-        url: "https://g8fa4d195f24899-usa.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/client/client/"+id,
+        url: "https://g3587aeb78a14ca-partyroom.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/client/client/"+id,
         data: {},
         type: "GET",
         datatype: "JSON",
@@ -90,7 +90,7 @@ function updateClientes(){
     };
     let jsonActualizarClientes = JSON.stringify(actualizarClientes);
     $.ajax({
-        url: "https://g8fa4d195f24899-usa.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/client/client",
+        url: "https://g3587aeb78a14ca-partyroom.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/client/client",
         data: jsonActualizarClientes,
         type: "PUT",
         datatype: "JSON",
@@ -112,7 +112,7 @@ function borrarClientes(id) {
     };
     var datosJson = JSON.stringify(idEliminarCliente);
     $.ajax({
-        url: 'https://g8fa4d195f24899-usa.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/client/client',
+        url: 'https://g3587aeb78a14ca-partyroom.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/client/client',
         type: "DELETE",
         data: datosJson,
         contentType: "application/JSON",

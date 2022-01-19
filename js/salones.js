@@ -6,7 +6,7 @@ function agregarSalon() {
         name: $("#salonesName").val()
     };
     $.ajax({
-        url: "https://g8fa4d195f24899-usa.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/partyroom/partyroom",
+        url: "https://g3587aeb78a14ca-partyroom.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/partyroom/partyroom",
         type: "POST",
         data: salon,
         datatype: "JSON",
@@ -29,7 +29,7 @@ function agregarSalon() {
 
 function obtenerSalones() {
     $.ajax({
-        url: "https://g8fa4d195f24899-usa.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/partyroom/partyroom",
+        url: "https://g3587aeb78a14ca-partyroom.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/partyroom/partyroom",
         type: "GET",
         datatype: "JSON",
         success: function (respuesta) {
@@ -70,7 +70,7 @@ function mostrarSalones(items) {
 
 function actualizarSalon(id) {
     $.ajax({
-        url: "https://g8fa4d195f24899-usa.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/partyroom/partyroom/"+id,
+        url: "https://g3587aeb78a14ca-partyroom.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/partyroom/partyroom/"+id,
         data: {},
         type: "GET",
         datatype: "JSON",
@@ -98,7 +98,7 @@ function updateSalon(){
     };
     let jsonActualizarSalon = JSON.stringify(actualizarSalon);
     $.ajax({
-        url: "https://g8fa4d195f24899-usa.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/partyroom/partyroom",
+        url: "https://g3587aeb78a14ca-partyroom.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/partyroom/partyroom",
         data: jsonActualizarSalon,
         type: "PUT",
         datatype: "JSON",
@@ -120,7 +120,7 @@ function borrarSalones(id) {
     };
     var datosJson = JSON.stringify(idEliminar);
     $.ajax({
-        url: 'https://g8fa4d195f24899-usa.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/partyroom/partyroom',
+        url: 'https://g3587aeb78a14ca-partyroom.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/partyroom/partyroom',
         type: "DELETE",
         data: datosJson,
         contentType: "application/JSON",

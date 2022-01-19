@@ -4,7 +4,7 @@ function agregarMensaje() {
         messagetext: $("#mensajeText").val()
     };
     $.ajax({
-        url: "https://g8fa4d195f24899-usa.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/message/message",
+        url: "https://g3587aeb78a14ca-partyroom.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/message/message",
         type: "POST",
         data: mensaje,
         datatype: "JSON",
@@ -19,7 +19,7 @@ function agregarMensaje() {
 
 function obtenerMensajes() {
     $.ajax({
-        url: 'https://g8fa4d195f24899-usa.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/message/message',
+        url: 'https://g3587aeb78a14ca-partyroom.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/message/message',
         type: 'GET',
         datatype: "JSON",
 
@@ -56,7 +56,7 @@ function mostrarMensajes(items) {
 }
 function  actualizarMensajes(id){
     $.ajax({
-        url: "https://g8fa4d195f24899-usa.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/message/message/"+id,
+        url: "https://g3587aeb78a14ca-partyroom.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/message/message/"+id,
         data: {},
         type: "GET",
         datatype: "JSON",
@@ -78,7 +78,7 @@ function updateMensajes(){
     };
     let jsonActualizarSalon = JSON.stringify(actualizarMensaje);
     $.ajax({
-        url: "https://g8fa4d195f24899-usa.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/message/message",
+        url: "https://g3587aeb78a14ca-partyroom.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/message/message",
         data: jsonActualizarSalon,
         type: "PUT",
         datatype: "JSON",
@@ -100,7 +100,7 @@ function borrarMensajes(id) {
     };
     var datosJson = JSON.stringify(idEliminarMensajes);
     $.ajax({
-        url: 'https://g8fa4d195f24899-usa.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/message/message',
+        url: 'https://g3587aeb78a14ca-partyroom.adb.sa-santiago-1.oraclecloudapps.com/ords/admin/message/message',
         type: "DELETE",
         data: datosJson,
         contentType: "application/JSON",
